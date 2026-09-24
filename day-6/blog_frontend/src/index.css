@@ -1,0 +1,19 @@
+/* src/index.css */
+/* Tailwind v4 is "CSS-first": one import replaces the old @tailwind base/components/utilities. */
+@import "tailwindcss";
+
+/* Custom design tokens, exposed as Tailwind utilities (e.g. bg-ink, font-serif-display) */
+@theme {
+  --color-paper: #f6f3ec;
+  --color-ink: #1f2a24;
+  --color-moss: #3c5a45;
+  --color-mustard: #c98a2c;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}

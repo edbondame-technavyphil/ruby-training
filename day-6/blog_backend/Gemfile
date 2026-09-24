@@ -1,0 +1,24 @@
+# Gemfile
+# This replaces the Gemfile that `rails new` generates.
+# Key point: no `sqlite3`/`pg` and no `activerecord` — Mongoid is our ORM for MongoDB.
+
+source "https://rubygems.org"
+
+ruby "3.4.6" # match whatever Ruby version you have installed (`ruby -v`)
+
+gem "rails", "~> 7.1"
+
+# --- Database: MongoDB via Mongoid instead of ActiveRecord ---
+gem "mongoid", "~> 9.0"
+
+# --- API server ---
+gem "puma", "~> 6.0"
+
+# --- Cross-Origin Resource Sharing, so the React app (different port) can call this API ---
+gem "rack-cors"
+
+gem "bootsnap", require: false
+
+group :development, :test do
+  gem "debug"
+end

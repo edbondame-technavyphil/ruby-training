@@ -1,0 +1,29 @@
+# config/mongoid.yml
+# Tells Mongoid which MongoDB instance/database to use per environment.
+# This file replaces config/database.yml (which is an ActiveRecord/SQL concept).
+
+development:
+  clients:
+    default:
+      database: blog_development
+      hosts:
+        - localhost:27017
+      options:
+        # Keep this small in dev so a missing/stopped mongod fails fast instead of hanging.
+        connect_timeout: 5
+
+test:
+  clients:
+    default:
+      database: blog_test
+      hosts:
+        - localhost:27017
+      options:
+        connect_timeout: 5
+
+production:
+  clients:
+    default:
+      # In production, set MONGODB_URI as an environment variable
+      # (e.g. a MongoDB Atlas connection string).
+      uri: <%= ENV['mongodb+srv://edbondametechnavyphil_db_user:<Raprap14344>@cluster0.izzm4k4.mongodb.net/?appName=Cluster0'] %>
