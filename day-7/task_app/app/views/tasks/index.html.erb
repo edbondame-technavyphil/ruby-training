@@ -1,0 +1,28 @@
+<div class="flex justify-between items-center mb-8">
+  <div>
+    <h2 class="text-2xl font-bold text-slate-900">Your Tasks</h2>
+    <p class="text-slate-500 text-sm mt-1">Manage and organize your upcoming work.</p>
+  </div>
+  <%= link_to "New Task", new_task_path, class: "bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-lg shadow-sm transition" %>
+</div>
+
+<% if @tasks.any? %>
+  <div class="grid gap-4">
+    <% @tasks.each do |task| %>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+        <h3 class="text-lg font-semibold text-slate-900"><%= task.title %></h3>
+        <% if task.description.present? %>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed"><%= task.description %></p>
+        <% end %>
+        <span class="inline-block mt-3 text-xs text-slate-400 font-mono">
+          Created <%= time_ago_in_words(task.created_at) %> ago
+        </span>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="text-center py-12 bg-white rounded-xl border border-dashed border-slate-300">
+    <p class="text-slate-500 mb-4">No tasks found yet.</p>
+    <%= link_to "Create your first task", new_task_path, class: "text-indigo-600 hover:text-indigo-800 font-medium text-sm" %>
+  </div>
+<% end %>
